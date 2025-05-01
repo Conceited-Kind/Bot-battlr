@@ -6,6 +6,9 @@ import FilterBar from './components/FilterBar';
 import SortBar from './components/SortBar';
 import './App.css';
 
+// Base URL for the API
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+
 function App() {
   const [army, setArmy] = useState([]);
   const [bots, setBots] = useState([]);
@@ -13,9 +16,9 @@ function App() {
   const [filters, setFilters] = useState([]);
   const [currentSort, setCurrentSort] = useState('');
 
-  // Fetch bots on component mount
+  // Fetch bots 
   useEffect(() => {
-    fetch('http://localhost:8001/bots')
+    fetch(`${API_BASE_URL}/bots`)
       .then(res => res.json())
       .then(data => setBots(data))
       .catch(err => console.error("Error fetching bots:", err));
@@ -37,7 +40,7 @@ function App() {
   };
 
   const dischargeBot = (bot) => {
-    fetch(`http://localhost:8001/bots/${bot.id}`, {
+    fetch(`${API_BASE_URL}/bots/${bot.id}`, {
       method: 'DELETE'
     })
     .then(() => {
