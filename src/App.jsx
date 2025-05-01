@@ -7,7 +7,7 @@ import SortBar from './components/SortBar';
 import './App.css';
 
 // Base URL for the API
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 function App() {
   const [army, setArmy] = useState([]);
